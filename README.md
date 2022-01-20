@@ -1,16 +1,7 @@
-# coffee_journal
+# Coffee Journal
 
-A new Flutter project.
+A coffee journal app for recording different coffee beans you have tried.
 
-## Getting Started
+## Story
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+There are countless varieties of coffee beans available. However, as you explore more and more beans, it can be quite difficult to keep track of the ones you liked or disliked. This app will allow you to make a record of all the coffee you have tried, including the taste notes that you got, as well as an overall rating. Therefore, you will have an easier time looking back at all the beans you have enjoyed before and can order some more in the future.
