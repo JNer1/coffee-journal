@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_journal/widgets/coffee_card.dart';
 import 'package:flutter/material.dart';
 
-import '../chip_data.dart';
-
 class HomepageScreen extends StatefulWidget {
   const HomepageScreen({Key? key}) : super(key: key);
 
@@ -12,8 +10,6 @@ class HomepageScreen extends StatefulWidget {
 }
 
 class _HomepageScreenState extends State<HomepageScreen> {
-  final List<TasteChipData> _allTasteChips = [];
-
   final Stream _coffeeCardStream =
       FirebaseFirestore.instance.collection('coffee').snapshots();
 
@@ -51,6 +47,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                     delegate: SliverChildBuilderDelegate((context, index) {
                   return CoffeeCard(
                     name: snapshot.data.docs[index].get('name'),
+                    tasteNotes: snapshot.data.docs[index].get('tasteNotes'),
                   );
                 }, childCount: snapshot.data.docs.length)),
               )
