@@ -8,11 +8,11 @@ class TasteNoteChip extends StatelessWidget {
   Color? chipColor() {
     if (label == 'acidic') return const Color(0xffffe587);
     if (label == 'bold') return const Color(0xff808080);
+    if (label == 'caramel') return const Color(0xffd59200);
     if (label == 'fermented') return const Color(0xffd279a6);
     if (label == 'fruity') return const Color(0xffffb380);
     if (label == 'light') return const Color(0xfff2e6d9);
     if (label == 'nutty') return const Color(0xffa6733f);
-    if (label == 'caramel') return const Color(0xffd59200);
     return null;
   }
 
