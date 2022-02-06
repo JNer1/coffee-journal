@@ -29,15 +29,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
             );
           }
           if (snapshot.hasError) {
-            return Column(
-              children: const [
-                Icon(
-                  Icons.error,
-                  color: Colors.orange,
-                ),
-                Text('Error')
-              ],
-            );
+            showErrorMessage();
           }
           return CustomScrollView(
             slivers: [
@@ -55,6 +47,18 @@ class _HomepageScreenState extends State<HomepageScreen> {
           );
         },
       ),
+    );
+  }
+
+  Column showErrorMessage() {
+    return Column(
+      children: const [
+        Icon(
+          Icons.error,
+          color: Colors.orange,
+        ),
+        Text('Error')
+      ],
     );
   }
 }
