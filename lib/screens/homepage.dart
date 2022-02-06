@@ -46,7 +46,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                 sliver: SliverList(
                     delegate: SliverChildBuilderDelegate((context, index) {
                   return CoffeeCard(
-                    name: snapshot.data.docs[index].get('name'),
+                    coffeeName: snapshot.data.docs[index].get('name'),
                     tasteNotes: snapshot.data.docs[index].get('tasteNotes'),
                   );
                 }, childCount: snapshot.data.docs.length)),
