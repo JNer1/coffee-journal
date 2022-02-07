@@ -32,11 +32,10 @@ class _CoffeeListState extends State<CoffeeList> {
               padding: const EdgeInsets.all(8),
               sliver: SliverList(
                   delegate: SliverChildBuilderDelegate((context, index) {
-                var name = snapshot.data.docs[index].get('name');
-                var notes = snapshot.data.docs[index].get('tasteNotes');
+                var doc = snapshot.data.docs[index];
                 return CoffeeCard(
-                  coffeeName: name,
-                  tasteNotes: notes,
+                  coffeeName: doc.get('name'),
+                  tasteNotes: doc.get('tasteNotes'),
                 );
               }, childCount: snapshot.data.docs.length)),
             ),
