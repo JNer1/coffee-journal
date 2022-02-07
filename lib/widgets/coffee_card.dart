@@ -18,9 +18,6 @@ class CoffeeCard extends StatelessWidget {
     );
   }
 
-  List<Widget> get allTasteNotes =>
-      [for (String tasteNote in tasteNotes) TasteNoteChip(label: tasteNote)];
-
   Text getCoffeeName() => Text(coffeeName);
 
   Wrap getTasteNotes() {
@@ -29,4 +26,7 @@ class CoffeeCard extends StatelessWidget {
       children: allTasteNotes,
     );
   }
+
+  List<Widget> get allTasteNotes =>
+      [for (String tasteNote in tasteNotes) TasteNoteChip(label: tasteNote)];
 }

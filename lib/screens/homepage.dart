@@ -38,8 +38,8 @@ class _HomepageScreenState extends State<HomepageScreen> {
                 sliver: SliverList(
                     delegate: SliverChildBuilderDelegate((context, index) {
                   return CoffeeCard(
-                    coffeeName: snapshot.data.docs[index].get('name'),
-                    tasteNotes: snapshot.data.docs[index].get('tasteNotes'),
+                    coffeeName: getName(snapshot, index),
+                    tasteNotes: getNotes(snapshot, index),
                   );
                 }, childCount: snapshot.data.docs.length)),
               )
@@ -49,6 +49,12 @@ class _HomepageScreenState extends State<HomepageScreen> {
       ),
     );
   }
+
+  getNotes(AsyncSnapshot<dynamic> snapshot, int index) =>
+      snapshot.data.docs[index].get('tasteNotes');
+
+  getName(AsyncSnapshot<dynamic> snapshot, int index) =>
+      snapshot.data.docs[index].get('name');
 
   Column showErrorMessage() {
     return Column(
