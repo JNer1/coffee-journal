@@ -27,12 +27,13 @@ class _CoffeeListState extends State<CoffeeList> {
           if (snapshot.hasError) {
             showErrorMessage();
           }
-          return CustomScrollView(slivers: [
+          return CustomScrollView(reverse: false, slivers: [
             SliverPadding(
               padding: const EdgeInsets.all(8),
               sliver: SliverList(
                   delegate: SliverChildBuilderDelegate((context, index) {
                 var doc = snapshot.data.docs[index];
+
                 return CoffeeCard(
                   coffeeName: doc.get('name'),
                   tasteNotes: doc.get('tasteNotes'),

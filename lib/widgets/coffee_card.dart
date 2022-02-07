@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CoffeeCard extends StatelessWidget {
   final String coffeeName;
-  final Iterable tasteNotes;
+  final List<dynamic> tasteNotes;
 
   const CoffeeCard(
       {required this.coffeeName, required this.tasteNotes, Key? key})
