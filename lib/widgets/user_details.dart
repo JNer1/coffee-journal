@@ -1,7 +1,7 @@
-import 'package:coffee_journal/widgets/email_text_field.dart';
+import 'package:coffee_journal/auth/email_text_form.dart';
 import 'package:flutter/material.dart';
 
-import 'password_text_field.dart';
+import '../auth/password_text_form.dart';
 
 class UserDetails extends StatefulWidget {
   final dynamic emailController, passwordController;
@@ -17,14 +17,22 @@ class UserDetails extends StatefulWidget {
 
 class _UserDetailsState extends State<UserDetails> {
   @override
+  void dispose() {
+    widget.emailController.dispose();
+    widget.passwordController.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Flexible(
       child: Column(
         children: [
-          EmailTextField(
+          EmailTextForm(
             controller: widget.emailController,
           ),
-          PasswordTextField(
+          PasswordTextForm(
             controller: widget.passwordController,
           ),
         ],
