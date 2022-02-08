@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class TextInputCard extends StatelessWidget {
   const TextInputCard({
     Key? key,
-    required this.emailController,
+    required this.controller,
     required this.label,
   }) : super(key: key);
 
-  final TextEditingController emailController;
+  final TextEditingController controller;
   final String label;
 
   @override
@@ -21,7 +21,7 @@ class TextInputCard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             child: TextField(
-              controller: emailController,
+              controller: controller,
               textInputAction: TextInputAction.next,
               decoration: InputDecoration(labelText: label),
             ),

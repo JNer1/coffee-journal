@@ -21,11 +21,11 @@ class _UserDetailsState extends State<UserDetails> {
       child: Column(
         children: [
           TextInputCard(
-            emailController: widget.emailController,
+            controller: widget.emailController,
             label: 'Email',
           ),
           TextInputCard(
-            emailController: widget.passwordController,
+            controller: widget.passwordController,
             label: 'Password',
           ),
         ],
