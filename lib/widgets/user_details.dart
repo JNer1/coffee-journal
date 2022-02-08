@@ -20,11 +20,11 @@ class _UserDetailsState extends State<UserDetails> {
     return Flexible(
       child: Column(
         children: [
-          TextInputCard(
+          OutlinedTextField(
             controller: widget.emailController,
             label: 'Email',
           ),
-          TextInputCard(
+          OutlinedTextField(
             controller: widget.passwordController,
             label: 'Password',
           ),
