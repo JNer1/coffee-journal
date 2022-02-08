@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TasteChipData {
+class ChipData {
   final String label;
   final Color backgroundColor;
 
-  const TasteChipData({
+  const ChipData({
     required this.label,
     required this.backgroundColor,
   });

@@ -1,7 +1,10 @@
-import 'package:coffee_journal/screens/homepage.dart';
+import 'package:coffee_journal/auth/authentication_service.dart';
+import 'package:coffee_journal/auth/authentication_wrapper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -17,11 +20,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        Provider<AuthenticationService>(
+          create: (_) => AuthenticationService(FirebaseAuth.instance),
         ),
-        home: const HomepageScreen());
+        StreamProvider(
+            create: (context) =>
+                context.read<AuthenticationService>().authStateChanges,
+            initialData: null)
+      ],
+      child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            scaffoldBackgroundColor: const Color(0xfffafafa),
+            primarySwatch: Colors.blue,
+          ),
+          home: const AuthenticationWrapper()),
+    );
   }
 }

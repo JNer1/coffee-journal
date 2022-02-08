@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+
+import 'package:email_validator/email_validator.dart';
+
+class EmailTextForm extends StatefulWidget {
+  const EmailTextForm({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
+
+  final TextEditingController controller;
+
+  @override
+  State<EmailTextForm> createState() => _EmailTextFormState();
+}
+
+class _EmailTextFormState extends State<EmailTextForm> {
+  @override
+  void dispose() {
+    widget.controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: Container(
+        margin: const EdgeInsets.only(top: 4),
+        height: 70,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+          child: TextFormField(
+            controller: widget.controller,
+            textInputAction: TextInputAction.next,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            validator: (value) {
+              if (EmailValidator.validate(widget.controller.text)) {
+                return null;
+              }
+              return "Please Enter Valid Password";
+            },
+            decoration: const InputDecoration(
+              labelText: 'Email',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(16),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

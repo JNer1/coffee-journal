@@ -1,18 +1,32 @@
+import 'package:coffee_journal/widgets/taste_note_chip.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeCard extends StatelessWidget {
-  const CoffeeCard({required this.name, Key? key}) : super(key: key);
+  final String coffeeName;
+  final List<dynamic> tasteNotes;
 
-  final String name;
+  const CoffeeCard(
+      {required this.coffeeName, required this.tasteNotes, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
-        children: [
-          Text(name),
-        ],
+        children: [getCoffeeName(), getTasteNotes()],
       ),
     );
   }
+
+  Text getCoffeeName() => Text(coffeeName);
+
+  Wrap getTasteNotes() {
+    return Wrap(
+      spacing: 8,
+      children: allTasteNotes,
+    );
+  }
+
+  List<Widget> get allTasteNotes =>
+      [for (String tasteNote in tasteNotes) TasteNoteChip(label: tasteNote)];
 }
