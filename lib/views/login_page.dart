@@ -39,8 +39,19 @@ class _LoginPageState extends State<LoginPage> {
                     passwordController: passwordController,
                   ),
                   Flexible(
-                    child: TextButton(
-                        onPressed: login, child: const Text('Log In')),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: login,
+                          child: const Text('Log In'),
+                        ),
+                        TextButton(
+                          onPressed: register,
+                          child: const Text('Register'),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
