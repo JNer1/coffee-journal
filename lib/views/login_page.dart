@@ -1,6 +1,7 @@
+import 'package:coffee_journal/auth/authentication_service.dart';
 import 'package:coffee_journal/widgets/user_details.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -50,8 +51,14 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future login() async {
-    FirebaseAuth.instance.signInWithEmailAndPassword(
+  login() {
+    context.read<AuthenticationService>().login(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim());
+  }
+
+  register() {
+    context.read<AuthenticationService>().register(
         email: emailController.text.trim(),
         password: passwordController.text.trim());
   }

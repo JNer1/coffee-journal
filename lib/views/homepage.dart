@@ -1,5 +1,7 @@
+import 'package:coffee_journal/auth/authentication_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/coffee_list.dart';
 
@@ -18,15 +20,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (_) => AlertDialog(
-                    title: const Text('Log out?'),
-                    actions: [
-                      TextButton(onPressed: logOut, child: const Text('Yes'))
-                    ],
-                  ),
-                );
+                showLogout(context);
               },
               icon: const Icon(Icons.arrow_upward))
         ],
@@ -37,8 +31,18 @@ class _HomepageScreenState extends State<HomepageScreen> {
     );
   }
 
+  Future<dynamic> showLogout(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Log out?'),
+        actions: [TextButton(onPressed: logOut, child: const Text('Yes'))],
+      ),
+    );
+  }
+
   void logOut() {
-    FirebaseAuth.instance.signOut();
+    context.read<AuthenticationService>().logout();
     Navigator.of(context).pop();
   }
 }
