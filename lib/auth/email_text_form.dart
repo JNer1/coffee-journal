@@ -15,11 +15,7 @@ class EmailTextForm extends StatefulWidget {
 }
 
 class _EmailTextFormState extends State<EmailTextForm> {
-  @override
-  void dispose() {
-    widget.controller.dispose();
-    super.dispose();
-  }
+  final _emailFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +26,7 @@ class _EmailTextFormState extends State<EmailTextForm> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
           child: TextFormField(
+            key: _emailFormKey,
             controller: widget.controller,
             textInputAction: TextInputAction.next,
             autovalidateMode: AutovalidateMode.onUserInteraction,

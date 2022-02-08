@@ -17,14 +17,6 @@ class UserDetails extends StatefulWidget {
 
 class _UserDetailsState extends State<UserDetails> {
   @override
-  void dispose() {
-    widget.emailController.dispose();
-    widget.passwordController.dispose();
-
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Flexible(
       child: Column(

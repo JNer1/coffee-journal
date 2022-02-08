@@ -13,11 +13,7 @@ class PasswordTextForm extends StatefulWidget {
 }
 
 class _PasswordTextFormState extends State<PasswordTextForm> {
-  @override
-  void dispose() {
-    widget.controller.dispose();
-    super.dispose();
-  }
+  final _passwordFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +24,7 @@ class _PasswordTextFormState extends State<PasswordTextForm> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
           child: TextFormField(
+            key: _passwordFormKey,
             obscureText: true,
             controller: widget.controller,
             textInputAction: TextInputAction.next,
