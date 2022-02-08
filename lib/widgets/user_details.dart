@@ -1,6 +1,7 @@
+import 'package:coffee_journal/widgets/email_text_field.dart';
 import 'package:flutter/material.dart';
 
-import 'text_input_card.dart';
+import 'password_text_field.dart';
 
 class UserDetails extends StatefulWidget {
   final dynamic emailController, passwordController;
@@ -20,13 +21,11 @@ class _UserDetailsState extends State<UserDetails> {
     return Flexible(
       child: Column(
         children: [
-          OutlinedTextField(
+          EmailTextField(
             controller: widget.emailController,
-            label: 'Email',
           ),
-          OutlinedTextField(
+          PasswordTextField(
             controller: widget.passwordController,
-            label: 'Password',
           ),
         ],
       ),

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-class OutlinedTextField extends StatelessWidget {
-  const OutlinedTextField({
+class PasswordTextField extends StatelessWidget {
+  const PasswordTextField({
     Key? key,
     required this.controller,
-    required this.label,
   }) : super(key: key);
 
   final TextEditingController controller;
-  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +17,12 @@ class OutlinedTextField extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
           child: TextField(
+            obscureText: true,
             controller: controller,
             textInputAction: TextInputAction.next,
-            decoration: InputDecoration(
-              labelText: label,
-              border: const OutlineInputBorder(
+            decoration: const InputDecoration(
+              labelText: 'Password',
+              border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(16),
                 ),
