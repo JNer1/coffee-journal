@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
+            scaffoldBackgroundColor: const Color(0xfffafafa),
             primarySwatch: Colors.blue,
           ),
           home: const AuthenticationWrapper()),
