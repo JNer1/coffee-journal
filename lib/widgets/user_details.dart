@@ -5,6 +5,7 @@ import '../auth/password_text_form.dart';
 
 class UserDetails extends StatefulWidget {
   final dynamic emailController, passwordController;
+
   const UserDetails(
       {required this.emailController,
       required this.passwordController,

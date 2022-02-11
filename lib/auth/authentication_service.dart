@@ -12,8 +12,7 @@ class AuthenticationService {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      print('${_firebaseAuth.currentUser?.uid}');
-      return 'Logged in';
+      return "Logged In";
     } on FirebaseAuthException catch (e) {
       return e.message;
     }

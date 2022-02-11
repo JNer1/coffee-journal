@@ -10,11 +10,15 @@ class AuthenticationWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User?>();
+    final firebaseUser = Provider.of<User?>(context);
 
     if (firebaseUser != null) {
       return const HomepageScreen();
     }
-    return const LoginPage();
+    if (firebaseUser == null) {
+      return const LoginPage();
+    }
+
+    return const CircularProgressIndicator.adaptive();
   }
 }

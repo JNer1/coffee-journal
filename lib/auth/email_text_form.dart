@@ -34,7 +34,10 @@ class _EmailTextFormState extends State<EmailTextForm> {
               if (EmailValidator.validate(widget.controller.text)) {
                 return null;
               }
-              return "Please Enter Valid Password";
+              if (widget.controller.text.isEmpty) {
+                return "Email Cannot Be Empty";
+              }
+              return "Please Enter Valid Email";
             },
             decoration: const InputDecoration(
               labelText: 'Email',

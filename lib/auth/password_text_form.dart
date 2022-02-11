@@ -31,6 +31,9 @@ class _PasswordTextFormState extends State<PasswordTextForm> {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               if (widget.controller.text.length > 5) return null;
+              if (widget.controller.text.isEmpty) {
+                return "Passowrd Cannot Be Empty";
+              }
               return "Password must be at least 6 characters long";
             },
             decoration: const InputDecoration(

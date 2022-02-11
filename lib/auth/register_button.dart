@@ -3,7 +3,7 @@ import 'authentication_service.dart';
 
 import 'package:provider/provider.dart';
 
-class RegisterButton extends StatelessWidget {
+class RegisterButton extends StatefulWidget {
   const RegisterButton({
     Key? key,
     required this.emailController,
@@ -14,6 +14,11 @@ class RegisterButton extends StatelessWidget {
   final TextEditingController passwordController;
 
   @override
+  State<RegisterButton> createState() => _RegisterButtonState();
+}
+
+class _RegisterButtonState extends State<RegisterButton> {
+  @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () => register(context),
@@ -23,7 +28,7 @@ class RegisterButton extends StatelessWidget {
 
   void register(BuildContext context) {
     context.read<AuthenticationService>().register(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim());
+        email: widget.emailController.text.trim(),
+        password: widget.passwordController.text.trim());
   }
 }

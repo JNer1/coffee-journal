@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         StreamProvider(
             create: (context) =>
                 context.read<AuthenticationService>().authStateChanges,
-            initialData: null)
+            initialData: null),
       ],
       child: MaterialApp(
           title: 'Flutter Demo',

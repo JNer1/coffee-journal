@@ -1,7 +1,7 @@
-import 'package:coffee_journal/auth/authentication_service.dart';
-import 'package:coffee_journal/widgets/user_details.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import '../auth/login_button.dart';
+import '../auth/register_button.dart';
+import '../widgets/user_details.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,6 +13,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final _userDetailsKey = GlobalKey<FormState>();
+  final _loginButtonKey = GlobalKey();
+
+  String loginStatus = "";
+  bool? isFormValidated = false;
 
   @override
   void dispose() {
@@ -34,22 +39,34 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  UserDetails(
-                    emailController: emailController,
-                    passwordController: passwordController,
-                  ),
+                  Form(
+                      key: _userDetailsKey,
+                      onChanged: () {
+                        setState(() {
+                          _userDetailsKey.currentState!.validate()
+                              ? isFormValidated = true
+                              : isFormValidated = false;
+                        });
+                      },
+                      child: UserDetails(
+                          emailController: emailController,
+                          passwordController: passwordController)),
                   Flexible(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextButton(
-                          onPressed: login,
-                          child: const Text('Log In'),
+                        LoginButton(
+                          isValidated: isFormValidated,
+                          key: _loginButtonKey,
+                          emailController: emailController,
+                          passwordController: passwordController,
+                          onPressed: (String? status) {
+                            checkForLoginError(status, context);
+                          },
                         ),
-                        TextButton(
-                          onPressed: register,
-                          child: const Text('Register'),
-                        )
+                        RegisterButton(
+                            emailController: emailController,
+                            passwordController: passwordController)
                       ],
                     ),
                   )
@@ -62,15 +79,35 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  login() {
-    context.read<AuthenticationService>().login(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim());
+  void printValidationStatus() {
+    {
+      if (_userDetailsKey.currentState?.validate() == true) {
+        print('True');
+      }
+      if (isFormValidated == false) {
+        print('False');
+      }
+      if (_userDetailsKey.currentState?.validate() == null) {
+        print("Null");
+      }
+    }
   }
 
-  register() {
-    context.read<AuthenticationService>().register(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim());
+  void showErrorMessage(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+      loginStatus,
+      textAlign: TextAlign.center,
+    )));
+  }
+
+  void checkForLoginError(String? status, BuildContext context) {
+    {
+      setState(() => loginStatus = status!);
+      bool hasError = loginStatus != "Logged In";
+      if (hasError) {
+        showErrorMessage(context);
+      }
+    }
   }
 }
