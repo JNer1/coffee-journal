@@ -5,8 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AuthenticationWrapper extends StatelessWidget {
-  const AuthenticationWrapper({Key? key}) : super(key: key);
+class LoginAuthenticationWrapper extends StatelessWidget {
+  const LoginAuthenticationWrapper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,6 @@ class AuthenticationWrapper extends StatelessWidget {
       return const LoginPage();
     }
 
-    return const CircularProgressIndicator.adaptive();
+    return Container();
   }
 }

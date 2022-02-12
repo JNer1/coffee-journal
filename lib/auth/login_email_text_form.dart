@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PasswordTextForm extends StatefulWidget {
-  const PasswordTextForm({
+class LoginEmailTextForm extends StatefulWidget {
+  const LoginEmailTextForm({
     Key? key,
     required this.controller,
   }) : super(key: key);
@@ -9,29 +9,29 @@ class PasswordTextForm extends StatefulWidget {
   final TextEditingController controller;
 
   @override
-  State<PasswordTextForm> createState() => _PasswordTextFormState();
+  State<LoginEmailTextForm> createState() => _LoginEmailTextFormState();
 }
 
-class _PasswordTextFormState extends State<PasswordTextForm> {
-  final _passwordFormKey = GlobalKey<FormState>();
+class _LoginEmailTextFormState extends State<LoginEmailTextForm> {
+  final _emailFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 16),
+      padding: const EdgeInsets.only(top: 16),
       child: TextFormField(
-        key: _passwordFormKey,
-        obscureText: true,
+        key: _emailFormKey,
         controller: widget.controller,
         textInputAction: TextInputAction.next,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (value) {
-          if (widget.controller.text.length > 5) return null;
-
-          return "Password must be at least 6 characters long";
+          if (widget.controller.text.isEmpty) {
+            return "Email is required";
+          }
+          return null;
         },
         decoration: const InputDecoration(
-          labelText: 'Password',
+          labelText: 'Email',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(16),

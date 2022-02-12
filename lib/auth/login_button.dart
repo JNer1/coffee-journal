@@ -7,14 +7,14 @@ class LoginButton extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final Function(String?) onPressed;
-  final bool? isValidated;
+  final GlobalKey<FormState> loginFormKey;
 
   const LoginButton(
       {Key? key,
       required this.emailController,
       required this.passwordController,
       required this.onPressed,
-      required this.isValidated})
+      required this.loginFormKey})
       : super(key: key);
 
   @override
@@ -23,18 +23,20 @@ class LoginButton extends StatefulWidget {
 
 class _LoginButtonState extends State<LoginButton> {
   String? status = "";
-  bool isActive = false;
 
   @override
   Widget build(BuildContext context) {
-    // });
-    return TextButton(
-      onPressed: widget.isValidated!
-          ? () async {
-              await login(context);
-            }
-          : null,
-      child: const Text('Log In'),
+    return Container(
+      padding: const EdgeInsets.only(top: 28),
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () async {
+          if (widget.loginFormKey.currentState!.validate()) {
+            await login(context);
+          }
+        },
+        child: const Text('Log In'),
+      ),
     );
   }
 

@@ -1,9 +1,10 @@
 import 'package:coffee_journal/auth/authentication_service.dart';
-import 'package:coffee_journal/auth/authentication_wrapper.dart';
+import 'package:coffee_journal/auth/login_authentication_wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
@@ -33,10 +34,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
-            scaffoldBackgroundColor: const Color(0xfffafafa),
-            primarySwatch: Colors.blue,
-          ),
-          home: const AuthenticationWrapper()),
+              scaffoldBackgroundColor: const Color(0xfffafafa),
+              primarySwatch: Colors.blue,
+              appBarTheme: const AppBarTheme(
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                      statusBarBrightness: Brightness.dark))),
+          home: const LoginAuthenticationWrapper()),
     );
   }
 }
