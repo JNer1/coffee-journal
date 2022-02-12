@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "382521228767",
+    "project_id": "coffee-journal-8afc3",
+    "storage_bucket": "coffee-journal-8afc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382521228767:android:30bf8cb604593004c5d86a",
+        "android_client_info": {
+          "package_name": "com.example.coffee_journal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382521228767-lpr1p6jg6amikp98g1gqeteeffumh55t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBANfaakUw5VNqMiWCs1Nb_hJB8l3AMRmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382521228767-lpr1p6jg6amikp98g1gqeteeffumh55t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382521228767:android:55248a54e7a82f74c5d86a",
+        "android_client_info": {
+          "package_name": "com.javier.coffee_journal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382521228767-lpr1p6jg6amikp98g1gqeteeffumh55t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBANfaakUw5VNqMiWCs1Nb_hJB8l3AMRmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382521228767-lpr1p6jg6amikp98g1gqeteeffumh55t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
