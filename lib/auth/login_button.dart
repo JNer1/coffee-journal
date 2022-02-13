@@ -7,6 +7,7 @@ class LoginButton extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final Function(String?) onPressed;
+  final Function(bool) isLoadingStatus;
   final GlobalKey<FormState> loginFormKey;
 
   const LoginButton(
@@ -14,6 +15,7 @@ class LoginButton extends StatefulWidget {
       required this.emailController,
       required this.passwordController,
       required this.onPressed,
+      required this.isLoadingStatus,
       required this.loginFormKey})
       : super(key: key);
 
@@ -27,12 +29,14 @@ class _LoginButtonState extends State<LoginButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 70,
       padding: const EdgeInsets.only(top: 28),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () async {
+        onPressed: () {
           if (widget.loginFormKey.currentState!.validate()) {
-            await login(context);
+            widget.isLoadingStatus(true);
+            login(context);
           }
         },
         child: const Text('Log In'),
@@ -41,14 +45,17 @@ class _LoginButtonState extends State<LoginButton> {
   }
 
   Future<void> login(BuildContext context) async {
-    showDialog(
-        context: context,
-        builder: (context) => const Center(
-              child: CircularProgressIndicator.adaptive(),
-            ));
+    // showDialog(
+    //     context: context,
+    //     builder: (context) => const Center(
+    //           child: CircularProgressIndicator.adaptive(),
+    //         ));
     status = await tryLogin(context);
+    if (status != "Logged In") {
+      widget.isLoadingStatus(false);
+    }
     widget.onPressed(status);
-    Navigator.of(context).pop();
+    // Navigator.of(context).pop();
   }
 
   Future<String?> tryLogin(BuildContext context) {

@@ -18,8 +18,8 @@ class _GoogleLoginButtonState extends State<GoogleLoginButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 16),
       height: 55,
+      padding: const EdgeInsets.only(top: 16),
       width: double.infinity,
       child: SignInButton(
         Buttons.Google,

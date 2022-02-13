@@ -18,7 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _registerFormKey = GlobalKey<FormState>();
 
   String registerStatus = "";
-  bool? isFormValidated = false;
+  bool isLoading = false;
 
   @override
   void dispose() {
@@ -38,64 +38,70 @@ class _RegisterPageState extends State<RegisterPage> {
           child: SizedBox(
             height: 500,
             child: Card(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 32, 16, 32),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 8),
-                      child: Text(
-                        'Register',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Form(
-                      key: _registerFormKey,
-                      child: RegisterDetailsFields(
-                        emailController: emailController,
-                        passwordController: passwordController,
-                        confirmPasswordController: confirmPasswordController,
-                      ),
-                    ),
-                    RegisterButton(
-                      registerFormKey: _registerFormKey,
-                      onPressed: (String? status) {
-                        checkForRegisterError(status, context);
-                      },
-                      emailController: emailController,
-                      passwordController: passwordController,
-                      confirmPasswordController: confirmPasswordController,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16),
-                      child: Center(
-                        child: RichText(
-                          text: TextSpan(children: [
-                            const TextSpan(
-                                text: 'Already have and account? ',
-                                style: TextStyle(color: Colors.black)),
-                            TextSpan(
-                              text: "Log In",
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = (() => Navigator.of(context)
-                                    .pushReplacement(MaterialPageRoute(
-                                        builder: (context) =>
-                                            const LoginAuthenticationWrapper()))),
-                              style: const TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.w500),
+              child: isLoading
+                  ? const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 32, 16, 32),
+                      child: Wrap(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 8),
+                            child: Text(
+                              'Register',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
-                          ]),
-                        ),
+                          ),
+                          Form(
+                            key: _registerFormKey,
+                            child: RegisterDetailsFields(
+                              emailController: emailController,
+                              passwordController: passwordController,
+                              confirmPasswordController:
+                                  confirmPasswordController,
+                            ),
+                          ),
+                          RegisterButton(
+                            registerFormKey: _registerFormKey,
+                            isLoadingStatus: (bool isLoadingStatus) =>
+                                setState(() => isLoading = isLoadingStatus),
+                            onPressed: (String? status) {
+                              checkForRegisterError(status, context);
+                            },
+                            emailController: emailController,
+                            passwordController: passwordController,
+                            confirmPasswordController:
+                                confirmPasswordController,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: Center(
+                              child: RichText(
+                                text: TextSpan(children: [
+                                  const TextSpan(
+                                      text: 'Already have and account? ',
+                                      style: TextStyle(color: Colors.black)),
+                                  TextSpan(
+                                    text: "Log In",
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = (() => Navigator.of(context)
+                                          .pushReplacement(MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const LoginAuthenticationWrapper()))),
+                                    style: const TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ]),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
             ),
           ),
         ),

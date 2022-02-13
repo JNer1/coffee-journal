@@ -8,6 +8,7 @@ class RegisterButton extends StatefulWidget {
       passwordController,
       confirmPasswordController;
   final Function(String?) onPressed;
+  final Function(bool) isLoadingStatus;
   final GlobalKey<FormState> registerFormKey;
 
   const RegisterButton(
@@ -16,6 +17,7 @@ class RegisterButton extends StatefulWidget {
       required this.passwordController,
       required this.confirmPasswordController,
       required this.onPressed,
+      required this.isLoadingStatus,
       required this.registerFormKey})
       : super(key: key);
 
@@ -29,13 +31,16 @@ class _RegisterButtonState extends State<RegisterButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 24),
+      height: 70,
+      padding: const EdgeInsets.only(top: 32),
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () async {
           if (widget.registerFormKey.currentState!.validate()) {
+            widget.isLoadingStatus(true);
             await register(context);
-            if (status != "Registerd") {
+            if (status != "Registered") {
+              widget.isLoadingStatus(false);
               null;
             }
           }
@@ -48,15 +53,15 @@ class _RegisterButtonState extends State<RegisterButton> {
   Future<void> register(BuildContext context) async {
     status = await tryRegister(context);
     widget.onPressed(status);
-    Navigator.of(context).pop();
+    // Navigator.of(context).pop();
   }
 
   Future<String?> tryRegister(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (context) => const Center(
-              child: CircularProgressIndicator.adaptive(),
-            ));
+    // showDialog(
+    //     context: context,
+    //     builder: (context) => const Center(
+    //           child: CircularProgressIndicator.adaptive(),
+    //         ));
     Future<String?> registerStatus = context
         .read<AuthenticationService>()
         .register(
