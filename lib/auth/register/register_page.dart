@@ -1,8 +1,8 @@
-import 'package:coffee_journal/auth/login_authentication_wrapper.dart';
-import 'package:coffee_journal/auth/register_details_fields.dart';
+import 'package:coffee_journal/auth/login/login_authentication_wrapper.dart';
+import 'package:coffee_journal/auth/register/register_details_fields.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../auth/register_button.dart';
+import '../auth/register/register_button.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
-import 'package:coffee_journal/auth/confirm_password_text_form.dart';
-import 'package:coffee_journal/auth/email_text_form.dart';
+import 'package:coffee_journal/auth/register/confirm_password_text_form.dart';
+import 'package:coffee_journal/auth/register/email_text_form.dart';
 import 'package:flutter/material.dart';
 
 import 'password_text_form.dart';

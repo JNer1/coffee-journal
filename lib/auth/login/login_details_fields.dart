@@ -1,5 +1,5 @@
-import 'package:coffee_journal/auth/login_email_text_form.dart';
-import 'package:coffee_journal/auth/login_password_text_form.dart';
+import 'package:coffee_journal/auth/login/login_email_text_form.dart';
+import 'package:coffee_journal/auth/login/login_password_text_form.dart';
 import 'package:flutter/material.dart';
 
 class LoginDetailsFields extends StatefulWidget {
