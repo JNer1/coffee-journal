@@ -13,9 +13,21 @@ class AuthenticationService {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      return "Logged In";
+      return 'Logged In';
     } on FirebaseAuthException catch (e) {
-      return e.message;
+      switch (e.code) {
+        case 'invalid-email':
+          return 'Invalid Email';
+
+        case 'user-not-found':
+          return 'Invalid Email';
+
+        case 'wrong-password':
+          return 'Wrong password';
+
+        default:
+          return e.message;
+      }
     }
   }
 

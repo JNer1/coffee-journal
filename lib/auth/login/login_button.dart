@@ -7,7 +7,7 @@ class LoginButton extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final Function(String?) onPressed;
-  final Function(bool) isLoadingStatus;
+  final Function(bool) checkIsLoading;
   final GlobalKey<FormState> loginFormKey;
 
   const LoginButton(
@@ -15,7 +15,7 @@ class LoginButton extends StatefulWidget {
       required this.emailController,
       required this.passwordController,
       required this.onPressed,
-      required this.isLoadingStatus,
+      required this.checkIsLoading,
       required this.loginFormKey})
       : super(key: key);
 
@@ -33,10 +33,13 @@ class _LoginButtonState extends State<LoginButton> {
       padding: const EdgeInsets.only(top: 28),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {
-          if (widget.loginFormKey.currentState!.validate()) {
-            widget.isLoadingStatus(true);
-            login(context);
+        onPressed: () async {
+          bool isValidated = widget.loginFormKey.currentState!.validate();
+          if (isValidated) {
+            widget.checkIsLoading(true);
+
+            await login(context);
+            checkforLoginError();
           }
         },
         child: const Text('Log In'),
@@ -45,23 +48,19 @@ class _LoginButtonState extends State<LoginButton> {
   }
 
   Future<void> login(BuildContext context) async {
-    // showDialog(
-    //     context: context,
-    //     builder: (context) => const Center(
-    //           child: CircularProgressIndicator.adaptive(),
-    //         ));
-    status = await tryLogin(context);
-    if (status != "Logged In") {
-      widget.isLoadingStatus(false);
-    }
-    widget.onPressed(status);
-    // Navigator.of(context).pop();
+    status = await (BuildContext context) {
+      Future<String?> status = context.read<AuthenticationService>().login(
+          email: widget.emailController.text.trim(),
+          password: widget.passwordController.text.trim());
+      return status;
+    }(context);
   }
 
-  Future<String?> tryLogin(BuildContext context) {
-    Future<String?> status = context.read<AuthenticationService>().login(
-        email: widget.emailController.text.trim(),
-        password: widget.passwordController.text.trim());
-    return status;
+  void checkforLoginError() {
+    bool hasLoginError = status != "Logged In";
+    if (hasLoginError) {
+      widget.checkIsLoading(false);
+    }
+    widget.onPressed(status);
   }
 }

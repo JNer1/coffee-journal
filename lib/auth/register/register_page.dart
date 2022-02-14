@@ -66,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           RegisterButton(
                             registerFormKey: _registerFormKey,
-                            isLoadingStatus: (bool isLoadingStatus) =>
+                            checkIsLoading: (bool isLoadingStatus) =>
                                 setState(() => isLoading = isLoadingStatus),
                             onPressed: (String? status) {
                               checkForRegisterError(status, context);

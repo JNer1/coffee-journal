@@ -63,11 +63,11 @@ class _LoginCardState extends State<LoginCard> {
                       loginFormKey: _loginFormKey,
                       emailController: emailController,
                       passwordController: passwordController,
-                      isLoadingStatus: (bool isLoadingStatus) =>
+                      checkIsLoading: (bool isLoadingStatus) =>
                           setState(() => isLoading = isLoadingStatus),
                       onPressed: (String? status) {
                         {
-                          setState(() => loginStatus = status!);
+                          loginStatus = status.toString();
                           bool hasError = loginStatus != "Logged In";
                           if (hasError) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
