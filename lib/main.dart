@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
+              useMaterial3: true,
               scaffoldBackgroundColor: const Color(0xfffafafa),
               primarySwatch: Colors.blue,
               appBarTheme: const AppBarTheme(

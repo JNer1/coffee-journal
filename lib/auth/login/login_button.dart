@@ -37,7 +37,6 @@ class _LoginButtonState extends State<LoginButton> {
           bool isValidated = widget.loginFormKey.currentState!.validate();
           if (isValidated) {
             widget.checkIsLoading(true);
-
             await login(context);
             checkforLoginError();
           }
