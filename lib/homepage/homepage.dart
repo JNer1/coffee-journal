@@ -21,7 +21,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
               onPressed: () {
                 showLogout(context);
               },
-              icon: const Icon(Icons.arrow_upward))
+              icon: const Icon(Icons.logout))
         ],
         title: const Text('Coffee Journal'),
         centerTitle: true,
