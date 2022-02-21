@@ -1,5 +1,5 @@
-import 'package:coffee_journal/views/homepage.dart';
-import 'package:coffee_journal/views/login_page.dart';
+import 'package:coffee_journal/homepage/homepage.dart';
+import 'package:coffee_journal/auth/login/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
 import 'package:coffee_journal/auth/authentication_service.dart';
-import 'package:coffee_journal/auth/login_authentication_wrapper.dart';
+import 'package:coffee_journal/auth/login/login_authentication_wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
+              useMaterial3: true,
               scaffoldBackgroundColor: const Color(0xfffafafa),
               primarySwatch: Colors.blue,
               appBarTheme: const AppBarTheme(

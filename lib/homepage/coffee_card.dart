@@ -1,4 +1,4 @@
-import 'package:coffee_journal/widgets/taste_note_chip.dart';
+import 'package:coffee_journal/homepage/taste_note_chip.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeCard extends StatelessWidget {

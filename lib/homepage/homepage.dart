@@ -2,7 +2,7 @@ import 'package:coffee_journal/auth/authentication_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/coffee_list.dart';
+import 'coffee_list.dart';
 
 class HomepageScreen extends StatefulWidget {
   const HomepageScreen({Key? key}) : super(key: key);

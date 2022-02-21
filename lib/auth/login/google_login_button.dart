@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
-import 'authentication_service.dart';
+import '../authentication_service.dart';
 
 import 'package:provider/provider.dart';
 
@@ -18,8 +18,8 @@ class _GoogleLoginButtonState extends State<GoogleLoginButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 16),
       height: 55,
+      padding: const EdgeInsets.only(top: 16),
       width: double.infinity,
       child: SignInButton(
         Buttons.Google,
