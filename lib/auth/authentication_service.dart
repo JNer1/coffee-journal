@@ -20,10 +20,10 @@ class AuthenticationService {
           return 'Invalid Email';
 
         case 'user-not-found':
-          return 'Invalid Email';
+          return 'User not found';
 
         case 'wrong-password':
-          return 'Wrong password';
+          return 'Incorrect password';
 
         default:
           return e.message;
